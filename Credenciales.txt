@@ -1,0 +1,5 @@
+password: npg_1OoaPtD3CrNQ
+postgresql://neondb_owner:npg_1OoaPtD3CrNQ@ep-snowy-term-amrh1a94.c-5.us-east-1.aws.neon.tech/neondb?sslmode=require
+
+Commando connect to app:
+npx neonctl@latest init
