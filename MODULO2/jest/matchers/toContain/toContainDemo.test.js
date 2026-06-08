@@ -1,28 +1,22 @@
-﻿const { obtenerFrutas, contienePalabra, agregarElemento } = require('./toContainDemo');
+const { obtenerFrutas, contienePalabra, agregarElemento } = require('./toContainDemo');
 describe('toContain matcher', () => {
-    test('Caso Exitoso: elemento dentro de array', () => {
+    test('Happy path: elemento dentro de array', () => {
         const frutas = obtenerFrutas();
         expect(frutas).toContain('pera');
     });
 
-
-
-    test('Caso Exitoso: palabra dentro de texto', () => {
-        expect(contienePalabra('Jest es increÃ­ble', 'increÃ­ble')).toBe(true);
+    test('Happy path: palabra dentro de texto', () => {
+        expect(contienePalabra('Jest es increíble', 'increíble')).toBe(true);
     });
 
-
-
-    test('Caso Fallido: elemento no encontrado o tipo incorrecto', () => {
+    test('Sad path: elemento no encontrado o tipo incorrecto', () => {
         const frutas = obtenerFrutas();
         expect(frutas).not.toContain('banana');
         expect(() => contienePalabra(123, 'texto')).toThrow('Ambos argumentos deben ser strings');
     });
 
-
-
-    test('Caso Fallido: agregarElemento con valores invÃ¡lidos', () => {
+    test('Sad path: agregarElemento con valores inválidos', () => {
         expect(() => agregarElemento({}, 'x')).toThrow('lista debe ser un array');
-        expect(() => agregarElemento([], '')).toThrow('elemento no puede estar vacÃ­o');
+        expect(() => agregarElemento([], '')).toThrow('elemento no puede estar vacío');
     });
 });
