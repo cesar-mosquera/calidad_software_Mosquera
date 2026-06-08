@@ -1,9 +1,9 @@
-﻿function crearAlumno(nombre, edad){
+function crearAlumno(nombre, edad){
     if (!nombre || typeof nombre != 'string'){
-        throw new TypeError('Nombre invÃ¡lido');
+        throw new TypeError('Nombre inválido');
     }
     if (edad < 0){
-        throw new TypeError('Edad invÃ¡lida');
+        throw new TypeError('Edad inválida');
     }
     return {
         nombre,

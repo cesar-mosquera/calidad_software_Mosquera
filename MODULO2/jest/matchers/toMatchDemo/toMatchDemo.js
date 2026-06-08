@@ -1,4 +1,4 @@
-﻿function validarEmail(email) {
+function validarEmail(email) {
     if (typeof email !== 'string') throw new TypeError('email debe ser string');
     const regex = /^[\w.-]+@[\w.-]+\.[a-z]{2,}$/i;
     return regex.test(email);
@@ -6,7 +6,7 @@
 
 function encontrarPalabra(texto, patron) {
     if (typeof texto !== 'string' || typeof patron !== 'string') {
-        throw new TypeError('texto y patrÃ³n deben ser strings');
+        throw new TypeError('texto y patrón deben ser strings');
     }
     return new RegExp(patron, 'i').test(texto);
 }

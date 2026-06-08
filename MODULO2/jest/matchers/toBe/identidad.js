@@ -1,4 +1,4 @@
-﻿function identidad(valor, {clone = false}={}){
+function identidad(valor, {clone = false}={}){
     const esObjeto = valor!==null && typeof valor === 'object';
     if(clone){
         if(!esObjeto) throw new TypeError('Solo se puede clonar un objeto');
@@ -9,7 +9,7 @@
 }
 function suma(a,b){
     if(typeof a!=='number' || typeof b!=='number'){
-        throw new TypeError('ambos parametros deben ser nÃºmeros');
+        throw new TypeError('a y b deber ser números');
     }
     return a + b;
 }
