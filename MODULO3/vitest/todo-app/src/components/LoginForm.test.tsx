@@ -11,6 +11,7 @@ describe('LoginForm · queries', () => {
     expect(screen.getByLabelText('Incluye Usuario')).toBeInTheDocument();
     expect(screen.getByLabelText('Usuario')).toBeInTheDocument();
     expect(screen.getByLabelText('Contraseña')).toBeInTheDocument();
+    expect(screen.getByPlaceholderText('Tu usuario')).toBeInTheDocument();
   });
 
   it('debería encontrar el botón por rol y nombre (getByRole)', () => {
@@ -34,6 +35,12 @@ describe('LoginForm · queries', () => {
     // aria-label define el nombre accesible del <form>.
     expect(
       screen.getByRole('link'),).toBeInTheDocument();
+  });
+
+  it('NO debería mostrar un mensaje de error inicialmente (queryBy)', () => {
+    render(<LoginForm onLogin={() => {}} />);
+    // queryBy devuelve null → seguro para aserciones negativas.
+    expect(screen.queryByText('Credenciales inválidas')).not.toBeInTheDocument();
   });
 
 });

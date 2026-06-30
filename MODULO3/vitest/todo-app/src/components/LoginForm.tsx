@@ -21,7 +21,7 @@ export function LoginForm({ onLogin }: LoginFormProps) {
       <input
         id="adduser"
         value={username}
-        placeholder="Tu usuario"
+        placeholder="Usuario"
         onChange={(e) => setUsername(e.target.value)}
       />
       <label htmlFor="username">Usuario</label>
