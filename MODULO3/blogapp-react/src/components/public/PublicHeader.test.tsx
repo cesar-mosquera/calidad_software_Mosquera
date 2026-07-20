@@ -9,7 +9,7 @@ beforeEach(() => {
 })
 
 describe('PublicHeader', () => {
-  it('should show login and register links when there is no session', () => {
+  it('should show login and register links when there is no session', (  ) => {
     renderWithRouter(<PublicHeader />)
 
     expect(screen.getByText('Ingresar')).toBeInTheDocument()

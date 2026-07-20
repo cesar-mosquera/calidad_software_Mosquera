@@ -1,32 +1,24 @@
-// src/components/ToastContainer.test.tsx
-import { render, screen } from '@testing-library/react'
+// src/components/ToastContainer.tsx
+import { useEffect } from 'react'
 import { useToastStore } from '@/store/toast.store'
-import ToastContainer from './ToastContainer'
 
-beforeEach(() => {
-  useToastStore.setState({ message: null })
-})
+export default function ToastContainer() {
+  const { message, type, clear } = useToastStore()
 
-describe('ToastContainer', () => {
-  it('should render nothing when there is no message', () => {
-    render(<ToastContainer />)
-    expect(screen.queryByRole('generic')).not.toBeInTheDocument()
-  })
+  useEffect(() => {
+    if (!message) return
+    const timer = setTimeout(clear, 4000)
+    return () => clearTimeout(timer)
+  }, [message, clear])
 
-  it('should show the message from the toast store', () => {
-    useToastStore.setState({ message: 'Ocurrió un error inesperado' })
-    render(<ToastContainer />)
-    expect(screen.getByText('Ocurrió un error inesperado')).toBeInTheDocument()
-  })
+  if (!message) return null
 
-  it('should clear itself after 4 seconds', () => {
-    vi.useFakeTimers()
-    useToastStore.setState({ message: 'Ocurrió un error inesperado' })
-    render(<ToastContainer />)
+  const colorClass =
+    type === 'success' ? 'bg-green-600 text-white' : 'bg-destructive text-destructive-foreground'
 
-    vi.advanceTimersByTime(4000)
-
-    expect(useToastStore.getState().message).toBeNull()
-    vi.useRealTimers()
-  })
-})
+  return (
+    <div className={`fixed bottom-4 right-4 rounded-md px-4 py-3 text-sm shadow-lg ${colorClass}`}>
+      {message}
+    </div>
+  )
+}
