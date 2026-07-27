@@ -57,7 +57,11 @@ describe('CRUD de Categorías', () => {
 
     cy.contains('td', name)
       .parent('tr')
-      .within(() => cy.contains('button', 'Borrar').click())
+      .within(() => cy.contains('button', 'Eliminar').click())
+
+    cy.get('[role="dialog"]').within(() => {
+      cy.contains('button', 'Eliminar').click()
+    })
 
     cy.contains('td', name).should('not.exist')
     categoryId = undefined
